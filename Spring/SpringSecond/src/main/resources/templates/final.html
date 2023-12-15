@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CHIRAND</title>
+    <style>
+        /* Your existing styles... */
+  body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .highlight {
+            background-color: #FFD700; /* Highlight color */
+            font-weight: bold;
+        }
+        /* New style for the hover effect on text */
+        td:hover {
+            background-color: #ADD8E6; /* Change the color to your desired hover effect */
+        }
+    </style>
+</head>
+<body>
+    <table id="myTable">
+        <tr th:each="ref: ${mylist}">
+            <!-- Use th:class to add a default class to each cell -->
+            <td th:class="${'table-cell'}" th:text="${ref.bookName}" />
+            <td th:class="${'table-cell'}" th:text="${ref.price}" />
+        </tr>
+    </table>
+
+    <script>
+        // Add event listeners to each table cell
+        var cells = document.querySelectorAll('.table-cell');
+        cells.forEach(function(cell) {
+            // Add event listener for mouseover
+            cell.addEventListener('mouseover', function() {
+                cell.classList.add('highlight'); // Add the 'highlight' class on mouseover
+            });
+
+            // Add event listener for mouseout
+            cell.addEventListener('mouseout', function() {
+                cell.classList.remove('highlight'); // Remove the 'highlight' class on mouseout
+            });
+        });
+    </script>
+</body>
+</html>
